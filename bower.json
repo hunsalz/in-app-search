@@ -1,7 +1,21 @@
 {
   "name": "in-app-search",
-  "description": "An implementation of material design expandable search.",
+  "version": "1.0.0",
+  "description": "An implementation of material design in app search.",
+  "keywords": [
+    "web-component",
+    "webcomponent",
+    "polymer",
+    "search"
+  ],
   "main": "in-app-search.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/hunsalz/in-app-search",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "bower_components"
+  ],
   "dependencies": {
     "polymer": "Polymer/polymer#latest"
   },
