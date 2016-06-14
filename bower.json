@@ -16,18 +16,13 @@
     "bower_components"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#latest"
-  },
-  "devDependencies": {
-    "iron-component-page": "polymerelements/iron-component-page#latest",
+    "polymer": "Polymer/polymer#latest",
     "iron-a11y-keys": "polymerelements/iron-a11y-keys#latest",
     "iron-icons": "polymerelements/iron-icons#latest",
-    "iron-flex-layout": "polymerelements/iron-flex-layout#latest",
     "iron-input": "polymerelements/iron-input#latest",
-    "paper-header-panel": "polymerelements/paper-header-panel#latest",
-    "paper-icon-button": "polymerelements/paper-icon-button#latest",
-    "paper-styles": "polymerelements/paper-styles#latest",
-    "paper-toolbar": "polymerelements/paper-toolbar#latest",
+    "paper-icon-button": "polymerelements/paper-icon-button#latest"
+  },
+  "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#latest",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#latest",
     "web-component-tester": "^4.0.0",
