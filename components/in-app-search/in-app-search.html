@@ -1,0 +1,125 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!-- iron elements -->
+<link rel="import" href="../iron-a11y-keys/iron-a11y-keys.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-input/iron-input.html">
+
+<!-- paper elements -->
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+
+<dom-module id="in-app-search">
+  <template>
+    <style>
+      :host {
+        display: inline;
+        -webkit-appearance: none;
+        font: inherit;
+      }
+      :host([expanded]) {
+        width: 100%;
+      }
+      .search-icon {
+        @apply(--layout-end);
+        @apply(--layout-self-center);
+      }
+      .search-box {
+        background-color: white;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        @apply(--layout-flex);
+        @apply(--layout-horizontal);
+      }
+      .search-box input {
+        font-size: 20px;
+        outline: 0;
+        border: none;
+        @apply(--layout-flex);
+      }
+      .search-box paper-icon-button {
+        color: var(--google-grey-700);
+      }
+      paper-icon-button.small {
+        width: 32px;
+        height: 32px;
+        @apply(--layout-self-center);
+      }
+    </style>
+    <template is="dom-if" if="[[!expanded]]">
+      <paper-icon-button
+        class="search-icon"
+        icon="icons:search"
+        noink
+        on-tap="_toggle">
+      </paper-icon-button>
+    </template>
+    <template is="dom-if" if="[[expanded]]">
+      <div class="search-box">
+        <paper-icon-button icon="icons:arrow-back" noink on-tap="_toggle"></paper-icon-button>
+        <iron-a11y-keys keys="enter" on-keys-pressed="_search"></iron-a11y-keys>
+        <input
+          id="input"
+          is="iron-input"
+          bind-value="{{query::input}}"
+          placeholder="[[placeholder]]">
+        <paper-icon-button
+          id="clear"
+          class="small"
+          icon="icons:cancel"
+          noink
+          on-tap="_clearInput"
+          hidden$="[[_hideUnlessAnyInputIsAvailable(query)]]">
+        </paper-icon-button>
+      </div>
+    </template>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'in-app-search',
+      properties: {
+        /**
+         * Recent input of search field.
+         */
+        'query': {
+          type: String,
+          value: '',
+          notify: true
+        },
+        /**
+         * Placeholder of search input field.
+         */
+        'placeholder': {
+          type: String,
+          value: ''
+        },
+        /**
+          * True while search field is expanded.
+          */
+        'expanded': {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+          notify: true
+        }
+      },
+      _search: function(event) {
+        this.fire('search', {query: this.query});
+      },
+      _toggle: function(event) {
+        this.expanded = !this.expanded;
+        // if search expands ensure that input field has always focus
+        if (this.expanded) {
+          this.async(function() {
+            this.querySelector('#input').focus();
+          }.bind(this), 50);
+        }
+      },
+      _clearInput: function(event) {
+        this.query = '';
+      },
+      _hideUnlessAnyInputIsAvailable: function(value) {
+        return value.length > 0 ? false : true;
+      }
+    });
+  </script>
+</dom-module>
