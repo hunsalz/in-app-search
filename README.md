@@ -2,6 +2,9 @@
 
 An implementation of material design in app search: [Search pattern](https://www.google.com/design/spec/patterns/search.html#search-in-app-search)
 
+Watch a [live demo](http://hunsalz.github.io/in-app-search/components/in-app-search/demo/) of \<in-app-search\>.
+
+
 ## Install the Polymer-CLI
 
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
