@@ -8,8 +8,6 @@
 <!-- paper elements -->
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 
-<link rel="import" href="../paper-button/paper-button.html">
-
 <dom-module id="in-app-search">
   <template>
     <style>
@@ -84,7 +82,7 @@
          */
         'query': {
           type: String,
-          value: function() { return ''; },
+          value: '',
           notify: true
         },
         /**
@@ -92,14 +90,14 @@
          */
         'placeholder': {
           type: String,
-          value: function() { return ''; }
+          value: ''
         },
         /**
           * True while search field is expanded.
           */
         'expanded': {
           type: Boolean,
-          value: function() { return false; },
+          value: false,
           reflectToAttribute: true,
           notify: true
         }
