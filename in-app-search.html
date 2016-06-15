@@ -13,8 +13,8 @@
     <style>
       :host {
         display: inline;
-        -webkit-appearance: none;
         font: inherit;
+        -webkit-appearance: none;
       }
       :host([expanded]) {
         width: 100%;
@@ -24,12 +24,13 @@
         @apply(--layout-self-center);
       }
       .search-box {
-        background-color: white;
+        background-color: var(--in-app-search-background-color, white);
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
         @apply(--layout-flex);
         @apply(--layout-horizontal);
       }
       .search-box input {
+        background-color: var(--in-app-search-background-color, white);
         font-size: 20px;
         outline: 0;
         border: none;
@@ -41,6 +42,7 @@
       paper-icon-button.small {
         width: 32px;
         height: 32px;
+        @apply(--layout-vertical);
         @apply(--layout-self-center);
       }
     </style>
@@ -110,7 +112,10 @@
         // if search expands ensure that input field has always focus
         if (this.expanded) {
           this.async(function() {
-            this.querySelector('#input').focus();
+            var selector = this.querySelector('#input');
+            if (selector != null) {
+              selector.focus();
+            }
           }.bind(this), 50);
         }
       },
