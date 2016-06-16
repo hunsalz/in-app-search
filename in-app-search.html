@@ -13,8 +13,8 @@
     <style>
       :host {
         display: inline;
-        font: inherit;
         -webkit-appearance: none;
+        font: inherit;
       }
       :host([expanded]) {
         width: 100%;
@@ -30,7 +30,6 @@
         @apply(--layout-horizontal);
       }
       .search-box input {
-        background-color: var(--in-app-search-background-color, white);
         font-size: 20px;
         outline: 0;
         border: none;
@@ -39,11 +38,12 @@
       .search-box paper-icon-button {
         color: var(--google-grey-700);
       }
+      .search-box div {
+        @apply(--layout-self-center);
+      }
       paper-icon-button.small {
         width: 32px;
         height: 32px;
-        @apply(--layout-vertical);
-        @apply(--layout-self-center);
       }
     </style>
     <template is="dom-if" if="[[!expanded]]">
@@ -54,27 +54,28 @@
         on-tap="_toggle">
       </paper-icon-button>
     </template>
-    <template is="dom-if" if="[[expanded]]">
+    <template id="box" is="dom-if" if="[[expanded]]">
       <div class="search-box">
         <paper-icon-button icon="icons:arrow-back" noink on-tap="_toggle"></paper-icon-button>
         <iron-a11y-keys keys="enter" on-keys-pressed="_search"></iron-a11y-keys>
         <input
-          id="input"
+          id="search"
           is="iron-input"
           bind-value="{{query::input}}"
           placeholder="[[placeholder]]">
-        <paper-icon-button
-          id="clear"
-          class="small"
-          icon="icons:cancel"
-          noink
-          on-tap="_clearInput"
-          hidden$="[[_hideUnlessAnyInputIsAvailable(query)]]">
-        </paper-icon-button>
+        </input>
+        <div hidden$="[[_hideUnlessAnyInputIsAvailable(query)]]">
+          <paper-icon-button
+            id="clear"
+            class="small"
+            icon="icons:cancel"
+            noink
+            on-tap="_clearInput">
+          </paper-icon-button>
+        </div>
       </div>
     </template>
   </template>
-
   <script>
     Polymer({
       is: 'in-app-search',
@@ -112,15 +113,13 @@
         // if search expands ensure that input field has always focus
         if (this.expanded) {
           this.async(function() {
-            var selector = this.querySelector('#input');
-            if (selector != null) {
-              selector.focus();
-            }
+            this.$$('#search').focus();
           }.bind(this), 50);
         }
       },
       _clearInput: function(event) {
         this.query = '';
+        this.$$('#search').focus();
       },
       _hideUnlessAnyInputIsAvailable: function(value) {
         return value.length > 0 ? false : true;
