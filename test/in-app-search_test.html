@@ -4,36 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>web-socket test</title>
+    <title>in-app-search test</title>
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../web-socket.html">
+    <link rel="import" href="../in-app-search.html">
   </head>
   <body>
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <web-socket></web-socket>
+        <in-app-search></in-app-search>
       </template>
     </test-fixture>
 
     <test-fixture id="ChangedPropertyTestFixture">
       <template>
-        <web-socket prop1="new-prop1"></web-socket>
+        <in-app-search prop1="new-prop1"></in-app-search>
       </template>
     </test-fixture>
 
     <script>
-      suite('web-socket', function() {
+      suite('in-app-search', function() {
 
         test('instantiating the element with default properties works', function() {
           var element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'web-socket');
+          assert.equal(element.prop1, 'in-app-search');
           var elementShadowRoot = element.shadowRoot;
           var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello web-socket!');
+          assert.equal(elementHeader.innerHTML, 'Hello in-app-search!');
         });
 
         test('setting a property on the element works', function() {
