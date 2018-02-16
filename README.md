@@ -1,41 +1,27 @@
+[![Build Status](https://travis-ci.org/hunsalz/in-app-search.svg?branch=master)](https://travis-ci.org/hunsalz/in-app-search)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/hunsalz/in-app-search)
+
 # \<in-app-search\>
 
 An implementation of material design in app search: [Search pattern](https://www.google.com/design/spec/patterns/search.html#search-in-app-search)
 
 Watch a [live demo](http://hunsalz.github.io/in-app-search/components/in-app-search/demo/) of \<in-app-search\>.
 
+## Install dependencies and run the demo locally
 
-## Install the Polymer-CLI
-
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
-
-## Viewing Your Application
+1. Install all dependencies via [Bower](https://bower.io/) in the repo directory:
 
 ```
-$ polymer serve
+    bower install
 ```
 
-## Building Your Application
+2. Run the demo automatically in your browser via the Polymer development server part of [Polymer CLI](https://www.npmjs.com/package/polymer-cli) from the project directory:
 
 ```
-$ polymer build
+    polymer serve --open
 ```
 
-This will create a `build/` folder with `bundled/` and `unbundled/` sub-folders
-containing a bundled (Vulcanized) and unbundled builds, both run through HTML,
-CSS, and JS optimizers.
+## Usage
 
-You can serve the built versions by giving `polymer serve` a folder to serve
-from:
-
-```
-$ polymer serve build/bundled
-```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+TODO
