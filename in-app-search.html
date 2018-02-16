@@ -16,114 +16,122 @@
         -webkit-appearance: none;
         font: inherit;
       }
+
       :host([expanded]) {
         width: 100%;
       }
+
       .search-icon {
-        @apply(--layout-end);
-        @apply(--layout-self-center);
+        @apply --layout-end;
+        @apply --layout-self-center;
       }
+
       .search-box {
         background-color: var(--in-app-search-background-color, white);
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-        @apply(--layout-flex);
-        @apply(--layout-horizontal);
+        @apply --layout-flex;
+        @apply --layout-horizontal;
       }
+
       .search-box input {
         font-size: 20px;
         outline: 0;
         border: none;
-        @apply(--layout-flex);
+        @apply --layout-flex;
       }
+
       .search-box paper-icon-button {
         color: var(--google-grey-700);
       }
+
       .search-box div {
-        @apply(--layout-self-center);
+        @apply --layout-self-center;
       }
+
       paper-icon-button.small {
         width: 32px;
         height: 32px;
       }
     </style>
     <template is="dom-if" if="[[!expanded]]">
-      <paper-icon-button
-        class="search-icon"
-        icon="icons:search"
-        noink
-        on-tap="_toggle">
+      <paper-icon-button class="search-icon" icon="icons:search" noink on-tap="__toggle">
       </paper-icon-button>
     </template>
     <template id="box" is="dom-if" if="[[expanded]]">
       <div class="search-box">
-        <paper-icon-button icon="icons:arrow-back" noink on-tap="_toggle"></paper-icon-button>
-        <iron-a11y-keys keys="enter" on-keys-pressed="_search"></iron-a11y-keys>
-        <input
-          id="search"
-          is="iron-input"
-          bind-value="{{query::input}}"
-          placeholder="[[placeholder]]">
+        <paper-icon-button icon="icons:arrow-back" noink on-tap="__toggle"></paper-icon-button>
+        <iron-a11y-keys keys="enter" on-keys-pressed="__search"></iron-a11y-keys>
+        <input id="search" is="iron-input" bind-value="{{query::input}}" placeholder="[[placeholder]]">
         </input>
-        <div hidden$="[[_hideUnlessAnyInputIsAvailable(query)]]">
-          <paper-icon-button
-            id="clear"
-            class="small"
-            icon="icons:cancel"
-            noink
-            on-tap="_clearInput">
+        <div hidden$="[[__hideUnlessAnyInputIsAvailable(query)]]">
+          <paper-icon-button id="clear" class="small" icon="icons:cancel" noink on-tap="__clearInput">
           </paper-icon-button>
         </div>
       </div>
     </template>
   </template>
+
   <script>
-    Polymer({
-      is: 'in-app-search',
-      properties: {
-        /**
-         * Recent input of search field.
-         */
-        'query': {
-          type: String,
-          value: '',
-          notify: true
-        },
-        /**
-         * Placeholder of search input field.
-         */
-        'placeholder': {
-          type: String,
-          value: ''
-        },
-        /**
-          * True while search field is expanded.
-          */
-        'expanded': {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true,
-          notify: true
-        }
-      },
-      _search: function(event) {
-        this.fire('search', {query: this.query});
-      },
-      _toggle: function(event) {
+    class InAppSearch extends Polymer.Element {
+
+      static get is() {
+        return 'in-app-search';
+      }
+
+      static get properties() {
+        return {
+          /**
+           * Recent input of search field.
+           */
+          'query': {
+            type: String,
+            value: '',
+            notify: true
+          },
+          /**
+           * Placeholder of search input field.
+           */
+          'placeholder': {
+            type: String,
+            value: ''
+          },
+          /**
+           * True while search field is expanded.
+           */
+          'expanded': {
+            type: Boolean,
+            value: false,
+            reflectToAttribute: true,
+            notify: true
+          }
+        };
+      }
+
+      __search(event) {
+        
+        console.log("FIRE");
+        //this.fire('search', { query: this.query });
+      }
+
+      __toggle(event) {
         this.expanded = !this.expanded;
         // if search expands ensure that input field has always focus
         if (this.expanded) {
-          this.async(function() {
+          this.async(function () {
             this.$$('#search').focus();
           }.bind(this), 50);
         }
-      },
-      _clearInput: function(event) {
+      }
+
+      __clearInput(event) {
         this.query = '';
         this.$$('#search').focus();
-      },
-      _hideUnlessAnyInputIsAvailable: function(value) {
+      }
+
+      __hideUnlessAnyInputIsAvailable(value) {
         return value.length > 0 ? false : true;
       }
-    });
+    }
+    window.customElements.define(InAppSearch.is, InAppSearch);
   </script>
 </dom-module>
