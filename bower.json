@@ -1,20 +1,7 @@
 {
   "name": "in-app-search",
-  "version": "1.0.0",
   "description": "An implementation of material design in app search.",
-  "keywords": [
-    "web-components",
-    "polymer",
-    "search"
-  ],
   "main": "in-app-search.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/hunsalz/in-app-search",
-  "ignore": [
-    "/.*",
-    "/test/",
-    "bower_components"
-  ],
   "dependencies": {
     "polymer": "Polymer/polymer#latest",
     "iron-a11y-keys": "polymerelements/iron-a11y-keys#latest",
@@ -23,9 +10,11 @@
     "paper-icon-button": "polymerelements/paper-icon-button#latest"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#latest",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#latest",
-    "web-component-tester": "^4.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "paper-input": "PolymerElements/paper-input#^2.0.0",
+    "paper-button": "PolymerElements/paper-button#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#latest"
   }
 }
+
