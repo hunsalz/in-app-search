@@ -24,4 +24,13 @@ Watch a [live demo](http://hunsalz.github.io/in-app-search/components/in-app-sea
 
 ## Usage
 
-TODO
+```html
+<in-app-search expanded placeholder="Search"></in-app-search>
+```
+
+The above example illustrates the usage of `<web-socket>` in a [Polymer](https://www.polymer-project.org) app.
+
+Attributes explained:
+
+* __expanded__ = True while search field is expanded
+* __placeholder__ = Specifies a short hint that describes the expected value of the search field
