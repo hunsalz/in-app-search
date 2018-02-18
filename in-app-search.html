@@ -13,8 +13,10 @@
     <style>
       :host {
         display: inline;
-        -webkit-appearance: none;
         font: inherit;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
       }
 
       :host([expanded]) {
@@ -48,7 +50,11 @@
         @apply --layout-self-center;
       }
 
-      paper-icon-button.small {
+      .clear-icon {
+        @apply: --layout-vertical @apply --layout-center;
+      }
+
+      .clear-icon paper-icon-button {
         width: 32px;
         height: 32px;
       }
@@ -61,12 +67,13 @@
       <div class="search-box">
         <paper-icon-button icon="icons:arrow-back" noink on-tap="__toggle"></paper-icon-button>
         <iron-a11y-keys keys="enter" on-keys-pressed="__search"></iron-a11y-keys>
-        <input id="search" is="iron-input" bind-value="{{query::input}}" placeholder="[[placeholder]]">
+        <input id="search" value="{{query::input}}" placeholder="[[placeholder]]">
         </input>
-        <div hidden$="[[__hideUnlessAnyInputIsAvailable(query)]]">
-          <paper-icon-button id="clear" class="small" icon="icons:cancel" noink on-tap="__clearInput">
+        <div class="clear-icon" hidden$="[[__isIconHidden(query)]]">
+          <paper-icon-button id="clear" icon="icons:cancel" noink on-tap="__clearInput">
           </paper-icon-button>
         </div>
+      </div>
       </div>
     </template>
   </template>
@@ -83,7 +90,7 @@
           /**
            * Recent input of search field.
            */
-          'query': {
+          query: {
             type: String,
             value: '',
             notify: true
@@ -91,14 +98,14 @@
           /**
            * Placeholder of search input field.
            */
-          'placeholder': {
+          placeholder: {
             type: String,
             value: ''
           },
           /**
            * True while search field is expanded.
            */
-          'expanded': {
+          expanded: {
             type: Boolean,
             value: false,
             reflectToAttribute: true,
@@ -108,27 +115,24 @@
       }
 
       __search(event) {
-        
-        console.log("FIRE");
-        //this.fire('search', { query: this.query });
+        this.dispatchEvent(new CustomEvent('search', {detail: {query: this.query}}));
       }
 
       __toggle(event) {
         this.expanded = !this.expanded;
-        // if search expands ensure that input field has always focus
+        // if expanded then focus input field again
         if (this.expanded) {
-          this.async(function () {
-            this.$$('#search').focus();
-          }.bind(this), 50);
+          setTimeout(() => this.shadowRoot.querySelector('#search').focus(), 100);
         }
       }
 
       __clearInput(event) {
         this.query = '';
-        this.$$('#search').focus();
+        // focus input field again
+        this.shadowRoot.querySelector('#search').focus();
       }
 
-      __hideUnlessAnyInputIsAvailable(value) {
+      __isIconHidden(value) {
         return value.length > 0 ? false : true;
       }
     }
