@@ -6,6 +6,24 @@
 
 An implementation of material design in app search: [Search pattern](https://www.google.com/design/spec/patterns/search.html#search-in-app-search)
 
+<!--
+```
+<custom-element-demo height="370">
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="in-app-search.html">
+    <style>
+    </style>
+    <dom-bind>
+      <template is="dom-bind">
+        <in-app-search expanded placeholder="Search"></in-app-search>
+      </template>
+    </dom-bind>
+  </template>
+</custom-element-demo>
+```
+-->
+
 Watch a [live demo](http://hunsalz.github.io/in-app-search/components/in-app-search/demo/) of \<in-app-search\>.
 
 ## Install dependencies and run the demo locally
