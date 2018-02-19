@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/hunsalz/in-app-search.svg?branch=master)](https://travis-ci.org/hunsalz/in-app-search)
 [![GitHub release](https://img.shields.io/github/release/hunsalz/in-app-search.svg?style=flat-square)](https://github.com/hunsalz/in-app-search/releases)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](http://doge.mit-license.org)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/hunsalz/in-app-search)
 
 # \<in-app-search\>
@@ -25,7 +25,7 @@ An implementation of material design in app search: [Search pattern](https://www
 ```
 -->
 
-Watch a [live demo ↗](http://hunsalz.github.io/in-app-search/components/in-app-search/demo/) of \<in-app-search\>.
+Watch a [live demo ↗](http://hunsalz.github.io/in-app-search/components/in-app-search/demo/)
 
 ## Install dependencies and run the demo locally
 
