@@ -1,25 +1,28 @@
 language: node_js
+node_js:
+  - "10"
 dist: trusty
 sudo: required
 addons:
-  firefox: "latest"
+  firefox: latest
+  chrome: stable
 node_js:
   - "node"
   - "stable"
 cache:
   directories:
     - node_modules
-install:
-  - npm install -g bower
-before_deploy:
-  - bower install jquery --config.directory=components
-  - git clone https://github.com/hunsalz/in-app-search components/in-app-search
-  - echo "<META http-equiv="refresh" content=\"0;URL=components/in-app-search/\">" >index.html
+script:
+  - npm install polymer-cli
+  - polymer install
+  - polymer build
+  - echo "<META http-equiv="refresh" content=\"0;URL=build/public/demo/\">" >index.html
 deploy:
   provider: pages
-  github-token: $GH_PAGES_TOKEN
   skip-cleanup: true
+  github-token: $GH_PAGES_TOKEN
   keep-history: true
+  local-dir: .
   verbose: true
   on:
     branch: master
