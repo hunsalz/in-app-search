@@ -2,6 +2,11 @@
   "name": "in-app-search",
   "description": "An implementation of material design in app search.",
   "main": "in-app-search.js",
+  "version": "1.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hunsalz/in-app-search"
+  },
   "dependencies": {
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
