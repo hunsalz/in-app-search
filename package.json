@@ -8,12 +8,11 @@
     "url": "https://github.com/hunsalz/in-app-search"
   },
   "dependencies": {
+    "@polymer/polymer": "^3.0.0",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/iron-input": "^3.0.0",
-    "@polymer/paper-icon-button": "^3.0.0",
-    "@polymer/polymer": "^3.0.0",
-    "polymer-cli": "^1.9.1"
+    "@polymer/paper-icon-button": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
