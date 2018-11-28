@@ -20,7 +20,6 @@ install:
 script:
   - npm install
   - polymer build
-  - echo "<META http-equiv="refresh" content=\"0;URL=demo/\">" > build/public/index.html
 deploy:
   provider: pages
   skip-cleanup: true
