@@ -20,12 +20,13 @@ install:
 script:
   - npm install
   - polymer build
+  - echo "<META http-equiv="refresh" content=\"0;URL=demo/\">" >index.html
 deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GH_PAGES_TOKEN
   keep-history: true
-  local-dir: build/public/demo
+  local-dir: build/public
   verbose: true
   on:
     branch: master
