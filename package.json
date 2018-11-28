@@ -1,0 +1,25 @@
+{
+  "name": "in-app-search",
+  "description": "An implementation of material design in app search.",
+  "main": "in-app-search.js",
+  "version": "1.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hunsalz/in-app-search"
+  },
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-a11y-keys": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-input": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.0"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "wct-mocha": "^1.0.0"
+  }
+}
